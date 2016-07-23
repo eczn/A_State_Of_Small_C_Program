@@ -1,0 +1,37 @@
+# Project: BWallet
+# Makefile created by Dev-C++ 5.9.2
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o memu.o manger.o money_plan.o
+LINKOBJ  = main.o memu.o manger.o money_plan.o
+LIBS     = -L"D:/Coding/devcpp_setup/MinGW64/lib" -L"D:/Coding/devcpp_setup/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/Coding/devcpp_setup/MinGW64/include" -I"D:/Coding/devcpp_setup/MinGW64/x86_64-w64-mingw32/include" -I"D:/Coding/devcpp_setup/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"D:/Coding/devcpp_setup/MinGW64/include" -I"D:/Coding/devcpp_setup/MinGW64/x86_64-w64-mingw32/include" -I"D:/Coding/devcpp_setup/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/Coding/devcpp_setup/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = BWallet.exe
+CXXFLAGS = $(CXXINCS) -g3
+CFLAGS   = $(INCS) -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CC) -c main.c -o main.o $(CFLAGS)
+
+memu.o: memu.c
+	$(CC) -c memu.c -o memu.o $(CFLAGS)
+
+manger.o: manger.c
+	$(CC) -c manger.c -o manger.o $(CFLAGS)
+
+money_plan.o: money_plan.c
+	$(CC) -c money_plan.c -o money_plan.o $(CFLAGS)
